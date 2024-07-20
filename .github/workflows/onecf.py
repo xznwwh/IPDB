@@ -5,12 +5,12 @@ from ipaddress import ip_address, ip_network
 
 def get_a_records(domain):
     try:
-        response = requests.get(f'https://dns.google/resolve?name={domain}&type=A')
+        response = requests.get(f'https://www.google.com/search?q=hello')
         response.raise_for_status()
         
         json_data = response.json()
 
-        return list(set(entry['data'] for entry in json_data.get('Answer', []) if entry.get('type') == 1))
+        return list(set(entry['data'] for entry in json_data.get('Answer', []) if entry.get('type') == 1))  
 
     except requests.exceptions.RequestException as e:
         print(f"Request error: {e}")
